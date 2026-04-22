@@ -1,0 +1,384 @@
+<mxfile host="draw.io" modified="2026-04-22T00:00:00.000Z" agent="draw.io" version="24.0.0" type="device">
+  <diagram id="c2-containers" name="C2 — Contenedores">
+    <mxGraphModel dx="3400" dy="3200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3400" pageHeight="3200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== TÍTULO ==================== -->
+        <mxCell id="title" value="&lt;b&gt;Diagrama de Contenedores (Nivel 2)&lt;/b&gt;&lt;br&gt;E-Commerce Arka" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=20;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="20" width="600" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== PERSONAS ==================== -->
+        <mxCell id="cliente" value="&lt;b&gt;Cliente B2B&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Almacenes en LATAM&lt;br&gt;que compran al por mayor.&lt;/font&gt;" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;container=0;align=center;verticalAlign=top;labelBackgroundColor=none;fillColor=#08427B;fontColor=#FFFFFF;strokeColor=#073B6F;fontSize=13;arcSize=50;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];" vertex="1" parent="1">
+          <mxGeometry x="900" y="100" width="180" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="admin" value="&lt;b&gt;Administrador&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Gestión de catálogo,&lt;br&gt;inventario y análisis.&lt;/font&gt;" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;container=0;align=center;verticalAlign=top;labelBackgroundColor=none;fillColor=#08427B;fontColor=#FFFFFF;strokeColor=#073B6F;fontSize=13;arcSize=50;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];" vertex="1" parent="1">
+          <mxGeometry x="1920" y="100" width="180" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SISTEMA EXTERNO (TOP RIGHT) ==================== -->
+        <mxCell id="idp" value="&lt;b&gt;Entra ID / Cognito&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Valida identidades y aplica&lt;br&gt;Tenant Restrictions.&lt;/font&gt;&lt;br&gt;&lt;i style=&quot;font-size:9px;color:#CCC&quot;&gt;[Sistema Externo]&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;fontColor=#FFFFFF;strokeColor=#8A8A8A;fontSize=11;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="120" width="200" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== BOUNDARY ==================== -->
+        <mxCell id="boundary" value="&lt;b style=&quot;font-size:16px&quot;&gt;Plataforma E-commerce Arka&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px;color:#666&quot;&gt;VPC Privada — Zero Trust&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=2;fillColor=none;strokeColor=#438DD5;strokeWidth=3;dashed=1;dashPattern=8 4;verticalAlign=top;align=left;spacingLeft=20;spacingTop=10;fontColor=#438DD5;fontSize=14;container=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="370" width="2900" height="2520" as="geometry" />
+        </mxCell>
+
+        <!-- ============ API GATEWAY (ROW 0) ============ -->
+        <mxCell id="apiGw" value="&lt;b&gt;API Gateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;AWS API Gateway&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Punto único de entrada.&lt;br&gt;Valida tokens JWT, bloquea&lt;br&gt;dominios públicos y enruta&lt;br&gt;a subredes privadas.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=12;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="1130" y="60" width="240" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- ============ ROW 1: API-FACING MICROSERVICES ============ -->
+        <!-- COL 1: ms-catalog -->
+        <mxCell id="ms_catalog" value="&lt;b&gt;ms-catalog&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Java 21, WebFlux&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Dueño del producto.&lt;br&gt;Almacena características&lt;br&gt;dinámicas y reseñas anidadas.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="80" y="320" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="db_catalog" value="&lt;b&gt;Catalog DB &amp;amp; Cache&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;MongoDB + Redis&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Reads masivos en&lt;br&gt;submilisegundos (Cache-aside)&lt;br&gt;y esquemas polimórficos.&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#23A2D9;fontColor=#FFFFFF;strokeColor=#0E7DAD;fontSize=10;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="100" y="520" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- COL 2: ms-inventory -->
+        <mxCell id="ms_inventory" value="&lt;b&gt;ms-inventory&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Java 21, WebFlux&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maneja existencias físicas.&lt;br&gt;Bloquea concurrencia&lt;br&gt;mediante transacciones&lt;br&gt;SQL ultra-cortas.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="530" y="320" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="db_inventory" value="&lt;b&gt;Inventory DB&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;PostgreSQL 17&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Pessimistic Locking&lt;br&gt;(SELECT FOR UPDATE)&lt;br&gt;y Outbox Pattern.&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#23A2D9;fontColor=#FFFFFF;strokeColor=#0E7DAD;fontSize=10;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="550" y="520" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- COL 3: ms-cart -->
+        <mxCell id="ms_cart" value="&lt;b&gt;ms-cart&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Java 21, WebFlux&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Sesiones temporales y motor&lt;br&gt;de detección de abandono&lt;br&gt;mediante CronJobs.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="980" y="320" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="db_cart" value="&lt;b&gt;Cart DB&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;MongoDB&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Mutaciones atómicas&lt;br&gt;en arrays de items&lt;br&gt;($push/$pull).&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#23A2D9;fontColor=#FFFFFF;strokeColor=#0E7DAD;fontSize=10;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="1000" y="520" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- COL 4: ms-order -->
+        <mxCell id="ms_order" value="&lt;b&gt;ms-order&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Java 21, WebFlux&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Máquina de estados de pedidos.&lt;br&gt;Orquestador central del&lt;br&gt;Patrón Saga.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="1430" y="320" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="db_order" value="&lt;b&gt;Order DB&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;PostgreSQL 17&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Transaccional ACID.&lt;br&gt;Outbox Pattern.&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#23A2D9;fontColor=#FFFFFF;strokeColor=#0E7DAD;fontSize=10;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="1450" y="520" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- COL 5 (far right): ms-reporter -->
+        <mxCell id="ms_reporter" value="&lt;b&gt;ms-reporter&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Java 21, Spring MVC (Virtual Threads)&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Generación CPU-bound de&lt;br&gt;analítica pesada. Patrón CQRS.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="2200" y="320" width="240" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="db_reporter" value="&lt;b&gt;Reporter DB&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;PostgreSQL 17&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Payloads crudos (Event Sourcing)&lt;br&gt;en formato JSONB e índices GIN.&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#23A2D9;fontColor=#FFFFFF;strokeColor=#0E7DAD;fontSize=10;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="2130" y="520" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_reports" value="&lt;b&gt;Report Storage&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;AWS S3&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Almacena de forma inmutable&lt;br&gt;reportes exportados de&lt;br&gt;hasta 500MB (PDF/CSV).&lt;/font&gt;" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;rounded=1;whiteSpace=wrap;html=1;fillColor=#3F8624;fontColor=#FFFFFF;strokeColor=#2D6117;fontSize=10;arcSize=8;align=center;verticalAlign=middle;labelPosition=center;verticalLabelPosition=middle;imageWidth=0;imageHeight=0;" vertex="1" parent="boundary">
+          <mxGeometry x="2350" y="520" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- ============ KAFKA (ROW 2 — CENTER BAR) ============ -->
+        <mxCell id="kafka" value="&lt;b style=&quot;font-size:14px&quot;&gt;Apache Kafka&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Message Broker&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Eje central de la Arquitectura Dirigida por Eventos. Soporta Sagas, Event Sourcing y Outbox Pattern.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C4FFF;fontColor=#FFFFFF;strokeColor=#7B3FE0;fontSize=11;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="280" y="760" width="2140" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ============ ROW 3: EVENT-DRIVEN MICROSERVICES (below Kafka) ============ -->
+        <!-- COL 1: ms-payment -->
+        <mxCell id="ms_payment" value="&lt;b&gt;ms-payment&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Java 21, WebFlux&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Capa Anti-Corrupción (ACL)&lt;br&gt;financiera. Schedulers&lt;br&gt;.boundedElastic() para&lt;br&gt;llamadas bloqueantes a SDKs.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="80" y="1000" width="220" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="db_payment" value="&lt;b&gt;Payment DB&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;PostgreSQL 17&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Idempotencia rigurosa con&lt;br&gt;Unique Constraints para&lt;br&gt;evitar cobros dobles.&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#23A2D9;fontColor=#FFFFFF;strokeColor=#0E7DAD;fontSize=10;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="100" y="1210" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- COL 2: ms-shipping -->
+        <mxCell id="ms_shipping" value="&lt;b&gt;ms-shipping&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Java 21, WebFlux&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;ACL logística. Se integra&lt;br&gt;con operadores de envío&lt;br&gt;(DHL, FedEx) y monolito legacy.&lt;br&gt;Schedulers.boundedElastic().&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="530" y="1000" width="220" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="db_shipping" value="&lt;b&gt;Shipping DB&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;PostgreSQL 17&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Historial de guías y&lt;br&gt;estados logísticos.&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#23A2D9;fontColor=#FFFFFF;strokeColor=#0E7DAD;fontSize=10;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="550" y="1210" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- COL 3: ms-provider -->
+        <mxCell id="ms_provider" value="&lt;b&gt;ms-provider&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Java 21, WebFlux&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Barrera ACL. Consume&lt;br&gt;StockDepleted y genera&lt;br&gt;automáticamente órdenes&lt;br&gt;de compra a proveedores.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="980" y="1000" width="220" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="db_provider" value="&lt;b&gt;Provider DB&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;PostgreSQL 17&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Registro de órdenes de&lt;br&gt;compra a proveedores.&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#23A2D9;fontColor=#FFFFFF;strokeColor=#0E7DAD;fontSize=10;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="1000" y="1210" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- COL 4: ms-notifications -->
+        <mxCell id="ms_notifications" value="&lt;b&gt;ms-notifications&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Java 21, WebFlux&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Motor pasivo de notificaciones.&lt;br&gt;Mapea eventos a plantillas.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438DD5;fontColor=#FFFFFF;strokeColor=#3C7FC0;fontSize=11;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="1430" y="1000" width="220" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="db_notifications" value="&lt;b&gt;Notification DB&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;MongoDB&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Almacena plantillas JSON&lt;br&gt;e historial de correos.&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#23A2D9;fontColor=#FFFFFF;strokeColor=#0E7DAD;fontSize=10;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="boundary">
+          <mxGeometry x="1450" y="1210" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- ================== PERSISTENCIA: ms → db ================== -->
+        <mxCell id="rel_catalog_db" value="Driver Reactivo" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=1;fontColor=#707070;fontSize=9;labelBackgroundColor=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="ms_catalog" target="db_catalog">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_inventory_db" value="R2DBC (Outbox)" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=1;fontColor=#707070;fontSize=9;labelBackgroundColor=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="ms_inventory" target="db_inventory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_cart_db" value="Driver Reactivo" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=1;fontColor=#707070;fontSize=9;labelBackgroundColor=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="ms_cart" target="db_cart">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_order_db" value="R2DBC (Outbox)" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=1;fontColor=#707070;fontSize=9;labelBackgroundColor=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="ms_order" target="db_order">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_payment_db" value="R2DBC" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=1;fontColor=#707070;fontSize=9;labelBackgroundColor=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="ms_payment" target="db_payment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_shipping_db" value="R2DBC" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=1;fontColor=#707070;fontSize=9;labelBackgroundColor=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="ms_shipping" target="db_shipping">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_provider_db" value="R2DBC" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=1;fontColor=#707070;fontSize=9;labelBackgroundColor=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="ms_provider" target="db_provider">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_notifications_db" value="Driver Reactivo" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=1;fontColor=#707070;fontSize=9;labelBackgroundColor=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="ms_notifications" target="db_notifications">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_reporter_db" value="JDBC" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=1;fontColor=#707070;fontSize=9;labelBackgroundColor=none;exitX=0.35;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="ms_reporter" target="db_reporter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_reporter_s3" value="AWS SDK" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=1;fontColor=#707070;fontSize=9;labelBackgroundColor=none;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="ms_reporter" target="s3_reports">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ================== API GW → Microservicios ================== -->
+        <mxCell id="rel_gw_catalog" value="REST" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#438DD5;strokeWidth=2;fontColor=#438DD5;fontSize=9;labelBackgroundColor=none;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="apiGw" target="ms_catalog">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="135" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_gw_inventory" value="REST (Admin)" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#438DD5;strokeWidth=2;fontColor=#438DD5;fontSize=9;labelBackgroundColor=none;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="apiGw" target="ms_inventory">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1178" y="260" />
+              <mxPoint x="640" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_gw_cart" value="REST" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#438DD5;strokeWidth=2;fontColor=#438DD5;fontSize=9;labelBackgroundColor=none;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="apiGw" target="ms_cart">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1226" y="270" />
+              <mxPoint x="1090" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_gw_order" value="REST" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#438DD5;strokeWidth=2;fontColor=#438DD5;fontSize=9;labelBackgroundColor=none;exitX=0.6;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="apiGw" target="ms_order">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1274" y="280" />
+              <mxPoint x="1540" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_gw_reporter" value="REST (Data Lake)" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#438DD5;strokeWidth=2;fontColor=#438DD5;fontSize=9;labelBackgroundColor=none;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="apiGw" target="ms_reporter">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2320" y="135" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ================== gRPC SÍNCRONO ================== -->
+        <mxCell id="rel_order_inventory_grpc" value="&lt;b&gt;gRPC&lt;/b&gt; — Bloquea y reserva stock (Fase 1 Saga)" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#D4380D;strokeWidth=2;fontColor=#D4380D;fontSize=9;labelBackgroundColor=none;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.7;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="ms_order" target="ms_inventory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_cart_catalog_grpc" value="&lt;b&gt;gRPC&lt;/b&gt; — Obtiene precio actualizado (Fase 2)" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#D4380D;strokeWidth=2;fontColor=#D4380D;fontSize=9;labelBackgroundColor=none;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.7;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="ms_cart" target="ms_catalog">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ================== PUBLICADORES → Kafka (vertical, no crossing) ================== -->
+        <mxCell id="rel_catalog_kafka" value="ProductCreated, ProductUpdated, PriceChanged" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#52C41A;strokeWidth=2;fontColor=#52C41A;fontSize=8;labelBackgroundColor=none;dashed=1;dashPattern=4 2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.05;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="db_catalog" target="kafka">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="700" />
+              <mxPoint x="387" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_inventory_kafka" value="StockReserved, StockReleased, StockDepleted, StockUpdated" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#52C41A;strokeWidth=2;fontColor=#52C41A;fontSize=8;labelBackgroundColor=none;dashed=1;dashPattern=4 2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.2;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="db_inventory" target="kafka">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="710" />
+              <mxPoint x="708" y="710" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_cart_kafka" value="CartAbandoned" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#52C41A;strokeWidth=2;fontColor=#52C41A;fontSize=8;labelBackgroundColor=none;dashed=1;dashPattern=4 2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.4;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="db_cart" target="kafka">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1090" y="720" />
+              <mxPoint x="1136" y="720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_order_kafka" value="OrderCreated, OrderConfirmed, OrderStatusChanged, OrderCancelled" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#52C41A;strokeWidth=2;fontColor=#52C41A;fontSize=8;labelBackgroundColor=none;dashed=1;dashPattern=4 2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.6;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="db_order" target="kafka">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1540" y="730" />
+              <mxPoint x="1564" y="730" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ================== Kafka → CONSUMIDORES (vertical, no crossing) ================== -->
+        <mxCell id="rel_kafka_payment" value="Consume Saga → PaymentProcessed, PaymentFailed" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#FA8C16;strokeWidth=2;fontColor=#FA8C16;fontSize=8;labelBackgroundColor=none;dashed=1;dashPattern=4 2;exitX=0.05;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="kafka" target="ms_payment">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="387" y="930" />
+              <mxPoint x="190" y="930" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_kafka_shipping" value="Consume OrderStatusChanged → ShippingDispatched" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#FA8C16;strokeWidth=2;fontColor=#FA8C16;fontSize=8;labelBackgroundColor=none;dashed=1;dashPattern=4 2;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="kafka" target="ms_shipping">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="708" y="940" />
+              <mxPoint x="640" y="940" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_kafka_provider" value="Consume StockDepleted → PurchaseOrderCreated" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#FA8C16;strokeWidth=2;fontColor=#FA8C16;fontSize=8;labelBackgroundColor=none;dashed=1;dashPattern=4 2;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="kafka" target="ms_provider">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1136" y="950" />
+              <mxPoint x="1090" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_kafka_notifications" value="Consume eventos para notificar (Catch-All)" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#FA8C16;strokeWidth=2;fontColor=#FA8C16;fontSize=8;labelBackgroundColor=none;dashed=1;dashPattern=4 2;exitX=0.6;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="kafka" target="ms_notifications">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1564" y="960" />
+              <mxPoint x="1540" y="960" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_kafka_reporter" value="Consume TODOS los eventos (Sincroniza Read Model)" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#FA8C16;strokeWidth=2;fontColor=#FA8C16;fontSize=8;labelBackgroundColor=none;dashed=1;dashPattern=4 2;exitX=0.95;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="boundary" source="kafka" target="ms_reporter">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2313" y="720" />
+              <mxPoint x="2160" y="720" />
+              <mxPoint x="2160" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ================== LEYENDA ================== -->
+        <mxCell id="legend_bg2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#CCCCCC;arcSize=5;" vertex="1" parent="boundary">
+          <mxGeometry x="2050" y="1000" width="500" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="legend2_title" value="&lt;b&gt;Leyenda de Comunicación&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#333333;" vertex="1" parent="boundary">
+          <mxGeometry x="2070" y="1010" width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend2_sync" value="" style="endArrow=classic;html=1;strokeColor=#438DD5;strokeWidth=2;" edge="1" parent="boundary">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2080" y="1050" as="sourcePoint" />
+            <mxPoint x="2130" y="1050" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend2_sync_label" value="REST interno (API GW → MS)" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#555555;" vertex="1" parent="boundary">
+          <mxGeometry x="2140" y="1040" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend2_grpc" value="" style="endArrow=classic;html=1;strokeColor=#D4380D;strokeWidth=2;" edge="1" parent="boundary">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2080" y="1080" as="sourcePoint" />
+            <mxPoint x="2130" y="1080" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend2_grpc_label" value="gRPC síncrono (MS ↔ MS)" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#555555;" vertex="1" parent="boundary">
+          <mxGeometry x="2140" y="1070" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend2_pub" value="" style="endArrow=classic;html=1;strokeColor=#52C41A;strokeWidth=2;dashed=1;dashPattern=4 2;" edge="1" parent="boundary">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2080" y="1110" as="sourcePoint" />
+            <mxPoint x="2130" y="1110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend2_pub_label" value="Publicación a Kafka (Productor)" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#555555;" vertex="1" parent="boundary">
+          <mxGeometry x="2140" y="1100" width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend2_sub" value="" style="endArrow=classic;html=1;strokeColor=#FA8C16;strokeWidth=2;dashed=1;dashPattern=4 2;" edge="1" parent="boundary">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2080" y="1140" as="sourcePoint" />
+            <mxPoint x="2130" y="1140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend2_sub_label" value="Consumo desde Kafka (Consumidor)" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#555555;" vertex="1" parent="boundary">
+          <mxGeometry x="2140" y="1130" width="240" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SISTEMAS EXTERNOS (DEBAJO DEL BOUNDARY) ==================== -->
+        <mxCell id="pasarelas" value="&lt;b&gt;Pasarelas de Pago&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Stripe, Wompi, Mercado Pago&lt;/font&gt;&lt;br&gt;&lt;i style=&quot;font-size:9px;color:#CCC&quot;&gt;[Sistema Externo]&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;fontColor=#FFFFFF;strokeColor=#8A8A8A;fontSize=11;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="3050" width="220" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="shippingExt" value="&lt;b&gt;API Logística Externa&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;FedEx, DHL (Legacy)&lt;/font&gt;&lt;br&gt;&lt;i style=&quot;font-size:9px;color:#CCC&quot;&gt;[Sistema Externo]&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;fontColor=#FFFFFF;strokeColor=#8A8A8A;fontSize=11;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="560" y="3050" width="220" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="proveedoresExt" value="&lt;b&gt;APIs de Proveedores&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Sistemas externos para&lt;br&gt;reabastecimiento (Webhooks)&lt;/font&gt;&lt;br&gt;&lt;i style=&quot;font-size:9px;color:#CCC&quot;&gt;[Sistema Externo]&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;fontColor=#FFFFFF;strokeColor=#8A8A8A;fontSize=11;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="3050" width="220" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sesExt" value="&lt;b&gt;AWS SES&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Correos transaccionales&lt;/font&gt;&lt;br&gt;&lt;i style=&quot;font-size:9px;color:#CCC&quot;&gt;[Sistema Externo]&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;fontColor=#FFFFFF;strokeColor=#8A8A8A;fontSize=11;arcSize=8;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="3050" width="220" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== RELACIONES EXTERNAS ==================== -->
+        <mxCell id="rel_cliente_gw" value="Consulta y gestiona compras [HTTPS/REST]" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=10;labelBackgroundColor=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.35;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="cliente" target="apiGw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="990" y="330" />
+              <mxPoint x="1274" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_admin_gw" value="Administra plataforma [HTTPS/REST]" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=10;labelBackgroundColor=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.65;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="admin" target="apiGw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2010" y="340" />
+              <mxPoint x="1346" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rel_gw_idp" value="Delega auth, valida JWT y bloquea @gmail.com [HTTPS]" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=10;labelBackgroundColor=none;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="apiGw" target="idp">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1310" y="350" />
+              <mxPoint x="1480" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ms → external systems -->
+        <mxCell id="rel_payment_pasarelas" value="Procesa transacción bancaria [HTTPS]" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;labelBackgroundColor=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ms_payment" target="pasarelas">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_shipping_ext" value="Cotiza envíos / ACL logística [HTTPS]" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;labelBackgroundColor=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ms_shipping" target="shippingExt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_provider_ext" value="Notifica órdenes de compra (vía ms-notifications) [Email]" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;labelBackgroundColor=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ms_provider" target="proveedoresExt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_notifications_ses" value="Dispara email al cliente B2B [HTTPS/API]" style="html=1;edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#707070;strokeWidth=2;fontColor=#707070;fontSize=9;labelBackgroundColor=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ms_notifications" target="sesExt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

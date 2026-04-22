@@ -5,11 +5,23 @@ title: Diagramas C4
 
 # Diagramas de Arquitectura — Arka
 
-Fuente Mermaid de los diagramas C4 del sistema.
+Diagramas C4 del sistema en tres formatos: render de alta fidelidad (draw.io), vista estructural compacta y código fuente Mermaid.
 
 ---
 
 ## Diagrama C1 — Contexto del Sistema
+
+![Diagrama de Contexto C4 Nivel 1 — Arka](/img/arka-c1-mcp.png)
+
+<details>
+<summary>Vista estructural compacta (draw.io)</summary>
+
+![Diagrama C4 L1 — vista compacta draw.io](/img/arka-c4-l1.png)
+
+</details>
+
+<details>
+<summary>Código fuente Mermaid</summary>
 
 ```mermaid
 C4Context
@@ -38,9 +50,23 @@ Rel(arka, ses, "Delega el envío de notificaciones y recordatorios a clientes", 
 UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
 ```
 
+</details>
+
 ---
 
 ## Diagrama C2 — Contenedores
+
+![Diagrama de Contenedores C4 Nivel 2 — Arka](/img/arka-c2-mcp.png)
+
+<details>
+<summary>Vista estructural compacta (draw.io)</summary>
+
+![Diagrama C4 L2 — vista compacta draw.io](/img/arka-c4-l2.png)
+
+</details>
+
+<details>
+<summary>Código fuente Mermaid</summary>
 
 ```mermaid
 C4Container
@@ -138,6 +164,4 @@ Rel(ms_notifications, ses, "Dispara email al cliente B2B", "HTTPS/API")
 UpdateLayoutConfig($c4ShapeInRow="4", $c4BoundaryInRow="1")
 ```
 
----
-
-> **Imágenes renderizadas:** `Arka C4 L1.drawio.png` · `Arka C4 L2.drawio.png`
+</details>
