@@ -1523,12 +1523,12 @@ docker exec arka-kafka kafka-consumer-groups --bootstrap-server localhost:29092 
 ## Apéndice B — Resumen de HUs vs Estado de Implementación
 
 | HU  | Descripción                           | MS Principal                | Estado                                                                          | Demo posible |
-| --- | ------------------------------------- | --------------------------- | ------------------------------------------------------------------------------- | ------------ | --- |
+| --- | ------------------------------------- | --------------------------- | ------------------------------------------------------------------------------- | ------------ |
 | HU1 | Registrar productos                   | ms-catalog                  | ✅ Implementado                                                                 | Sí           |
 | HU2 | Actualizar stock                      | ms-inventory                | ✅ Implementado                                                                 | Sí           |
 | HU3 | Reportes de bajo stock                | ms-reporter                 | ❌ Pendiente                                                                    | No           |
 | HU4 | Registrar orden de compra             | ms-order                    | ✅ Implementado (Fase 2: PENDIENTE_PAGO → simular pago en Kafka UI)             | Sí           |
 | HU5 | Modificar orden antes de confirmación | ms-order                    | ❌ Pendiente                                                                    | No           |
-| HU6 | Notificación de cambio de estado      | ms-order + ms-notifications | ✅ Implementado (correos activos vía SES — ver http://localhost:4566/\_aws/ses) | Sí           | }   |
+| HU6 | Notificación de cambio de estado      | ms-order + ms-notifications | ✅ Implementado (correos activos vía SES — ver http://localhost:4566/\_aws/ses) | Sí           |
 | HU7 | Reportes semanales de ventas          | ms-reporter                 | ❌ Pendiente                                                                    | No           |
 | HU8 | Carritos abandonados                  | ms-cart                     | ❌ Pendiente                                                                    | No           |
